@@ -34,11 +34,11 @@ class TestScrapping(unittest.TestCase):
     @patch('scrapping.tryToFindStation')
     def test_get_station(self, mockedFind):
         mockedFind.side_effect = ['601', None]  # Проверяем случай, когда нашлась станция на Белорусском Направлении
-        result = scrapping.getStation('Новодачная')
+        result = scrapping.getStation('name')
         self.assertEqual(result.getID(), '601')
 
         mockedFind.side_effect = [None, '29304']  # Проверяем случай, когда нашлась станция на Савеловском Направлении
-        result = scrapping.getStation('Новодачная')
+        result = scrapping.getStation('name')
         self.assertEqual(result.getID(), '29304')
 
 
